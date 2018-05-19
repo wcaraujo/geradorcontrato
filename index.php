@@ -6,12 +6,25 @@
 
     <script src="js/jquery-3.1.1.js" type="text/javascript"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
-    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-    <link href="css/style.css" rel="stylesheet" type="text/css"/>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
     <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
 
+
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+
+    
+    <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
+
+
+
+
+
+
+
+
+    <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
     <div class="col-md-2"></div>
@@ -120,42 +133,31 @@
                 </div>
             </div>                          
             <div class="row">
-                <div class="col-sm-4">
-                    <label>E-mail</label>
-                    <input type="text" class="form-control" name="email" id="email" placeholder="email@dominio.com.br" style="text-transform: uppercase;">
-                </div>
-                <div class="col-sm-4">
-                    <label>Telefone Residencial</label>
-                    <input type="text" class="form-control" name="telefone1" id="telefone1" placeholder="xx-xxxxxxxx" maxlength="20" style="text-transform: uppercase;">
-                </div>
-                <div class="col-sm-4">
-                    <label>Celular*</label>
-                    <input type="text" class="form-control" name="telefone2" id="telefone2" placeholder="xx-xxxxxxxxx" maxlength="20" style="text-transform: uppercase;">
-                </div>                
+             <div class="col-sm-3">
+                <label>Telefone 1</label>
+                <input type="text" class="form-control" name="telefone1" id="telefone1" style="text-transform: uppercase;">
             </div>
-            <div class="row">
-                <div class="col-sm-4">
-                    <label>Comercial/Contato</label>
-                    <input type="text" class="form-control" name="telefone3" id="telefone3" placeholder="xx-xxxxxxxx" maxlength="20" style="text-transform: uppercase; border-color: orange;">
-                </div>                    
+            <div class="col-sm-3">
+                <label>Telefone 2</label>
+                <input type="text" class="form-control" name="telefone2" id="telefone2" style="text-transform: uppercase;">
+            </div>   
+            <div class="col-sm-6">
+                <label>E-mail</label>
+                <input type="text" class="form-control" name="email" id="email" placeholder="email@dominio.com.br" style="text-transform: uppercase;">
             </div>
-
-            <div class="row">
-                <div class="col-sm-10">
-                    <label>OBS. Caso não haja nenhuma alteração, também é necessário a confirmação das informações.</label>
-                </div>
-            </div>
-            <br>
-            <div class="row">
-                <div class="form-group ">
-                    <button type="submit" class="btn btn-success">Gerar Contrato</button>
-                    <button type="reset" class="btn btn-warning"> Limpar Dados</button>
-
-                </div>
-            </div>
-        </form>
+        </div>
         <br>
-    </div>
-    <div class="col-md-2"></div>        
+
+        <div class="row">
+            <div class="form-group ">
+                <button type="submit" class="btn btn-success">Gerar Contrato</button>
+                <button type="reset" class="btn btn-warning"> Limpar Dados</button>
+
+            </div>
+        </div>
+    </form>
+    <br>
+</div>
+<div class="col-md-2"></div>        
 </body>
 </html>

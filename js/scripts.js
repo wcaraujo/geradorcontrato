@@ -4,7 +4,7 @@ $(document).ready(function () {
     $('.pula').on('keypress', function (e) {
         var tecla = (e.keyCode ? e.keyCode : e.which);
 
-        if (tecla === 13) {
+        if (tecla == 13) {
             campo = $('.pula');
             indice = campo.index(this);
 
@@ -16,7 +16,10 @@ $(document).ready(function () {
         }
     });
 
-    // Inseri máscara no CEP
+
+    // Mascaras 
+    $(document).ready(function() {
+
      $("#cpf").inputmask({
         mask: ["999.999.999-99", ],
         keepStatic: true
@@ -29,12 +32,22 @@ $(document).ready(function () {
         mask: ["99/99/9999", ],
         keepStatic: true
     });
-    $("#cep").inputmask({
+     $("#cep").inputmask({
         mask: ["99999-999", ],
         keepStatic: true
     });
+     $("#telefone1").inputmask({
+        mask: ["(99) 9999-9999", "(99) 99999-9999", ],
+        keepStatic: true
+    });
+     $("#telefone2").inputmask({
+        mask: ["(99) 9999-9999", "(99) 99999-9999", ],
+        keepStatic: true
+    });
+ });
 
-    // Método para consultar o CEP
+
+    // Consultar o CEP
     $('#cep').on('blur', function () {
 
         if ($.trim($("#cep").val()) != "") {
@@ -49,7 +62,7 @@ $(document).ready(function () {
                     $("#uf").val(unescape(resultadoCEP["uf"]));
                 }
 
-                $("#mensagem").html('');
+                //$("#mensagem").html('');
             });
         }
     });
