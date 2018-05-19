@@ -45,7 +45,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label>Nome*</label>
-                    <input type="text" class="form-control" name="nome" id="nome_benef"  style="text-transform: uppercase;">
+                    <input type="text" class="form-control" name="nome" maxlength="50" id="nome_benef" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3 cp-data">
                     <label>Data de Nascimento*</label>
@@ -70,7 +70,7 @@
                 </div>
                 <div class="col-sm-3">
                     <label>Cartão Nacional de Saúde</label>
-                    <input type="text" class="form-control" name="cns" id="cartao_nacional_saude" style="text-transform: uppercase;">
+                    <input type="text" class="form-control" name="cns" maxlength="15" id="cns" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
                     <label>RG*</label>

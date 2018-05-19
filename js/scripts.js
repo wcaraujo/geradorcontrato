@@ -21,6 +21,10 @@ $(document).ready(function () {
         mask: ["999.999.999-99", ],
         keepStatic: true
     });
+     $("#cns").inputmask({
+        mask: ["999999999999999", ],
+        keepStatic: true
+    });
      $("#datanascimento").inputmask({
         mask: ["99/99/9999", ],
         keepStatic: true
