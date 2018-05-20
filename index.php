@@ -5,22 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="js/jquery-3.1.1.js" type="text/javascript"></script>
+    <script src="jquery.validate.js" type="text/javascript"></script>
     <script src="js/scripts.js" type="text/javascript"></script>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
-
-
-
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
-
-    
-    <script type="text/javascript" src="js/jquery.maskedinput.min.js"></script>
-
-
-
-
-
-
+    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>    
 
 
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -29,12 +18,12 @@
 <body>
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <form method="POST" novalidate="novalidate" style="display: block;">
+        <form method="POST" novalidate="novalidate" id="validar" style="display: block;">
             <hr>
             <div class="row">
                 <div class="col-sm-3">
-                    <label>Plano*</label>
-                    <select name="plano" class="form-control selectpicker" >
+                    <label>Plano</label>
+                    <select name="plano" class="form-control selectpicker" required="">
                         <option value=" ">-</option>
                         <option>UAR-CP</option>
                         <option>USRC</option>
@@ -54,18 +43,17 @@
                     </select>
                 </div>
             </div>
-
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Nome*</label>
-                    <input type="text" class="form-control" name="nome" maxlength="50" id="nome_benef" style="text-transform: uppercase;">
+                    <label>Nome</label>
+                    <input type="text" class="form-control" name="nome" maxlength="50" id="nome" style="text-transform: uppercase;" required="">
                 </div>
                 <div class="col-sm-3 cp-data">
-                    <label>Data de Nascimento*</label>
+                    <label>Data de Nascimento</label>
                     <input type="text" class="form-control" name="datanascimento" id="datanascimento" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
-                    <label>Estado Civil*</label>
+                    <label>Estado Civil</label>
                     <select name="estadocivil" class="form-control selectpicker" >
                         <option value=" ">-</option>
                         <option>Solteiro(a)</option>
@@ -86,11 +74,11 @@
                     <input type="text" class="form-control" name="cns" maxlength="15" id="cns" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
-                    <label>RG*</label>
+                    <label>RG</label>
                     <input type="text" class="form-control" name="rg" id="rg" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
-                    <label>Orgão Emissor*</label>
+                    <label>Orgão Emissor</label>
                     <select name="estadocivil" class="form-control selectpicker" >
                         <option value=" ">-</option>
                         <option>SSP</option>
@@ -100,35 +88,35 @@
             </div>
             <div class="row">
                 <div class="col-sm-6">
-                    <label>Nome do Pai*</label>
+                    <label>Nome do Pai</label>
                     <input type="text" class="form-control" name="nomepai" id="nomepai" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-6">
-                    <label>Nome do Mãe*</label>
+                    <label>Nome da Mãe</label>
                     <input type="text" class="form-control" name="nomemae" id="nomemae" style="text-transform: uppercase;">                    
                 </div>
             </div>               
             <div class="row">
                 <div class="col-sm-3">
-                    <label>CEP*</label>
+                    <label>CEP</label>
                     <input type="text" class="form-control" name="cep" id="cep" style="text-transform: uppercase;">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-5">
-                    <label>Endereço*</label>
+                    <label>Endereço</label>
                     <input type="text" class="form-control" name="rua" id="rua" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
-                    <label>Bairro*</label>
+                    <label>Bairro</label>
                     <input type="text" class="form-control" name="bairro" id="bairro" style="text-transform: uppercase;">
                 </div>  
                 <div class="col-sm-3">
-                    <label>Cidade*</label>
+                    <label>Cidade</label>
                     <input type="text" class="form-control" name="cidade" id="cidade" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-1">
-                    <label>Estado*</label>
+                    <label>Estado</label>
                     <input type="text" class="form-control" name="uf" id="uf" style="text-transform: uppercase;">
                 </div>
             </div>                          
@@ -143,21 +131,17 @@
             </div>   
             <div class="col-sm-6">
                 <label>E-mail</label>
-                <input type="text" class="form-control" name="email" id="email" placeholder="email@dominio.com.br" style="text-transform: uppercase;">
+                <input type="text" class="form-control" name="email" id="email">
             </div>
         </div>
         <br>
-
         <div class="row">
-            <div class="form-group ">
-                <button type="submit" class="btn btn-success">Gerar Contrato</button>
-                <button type="reset" class="btn btn-warning"> Limpar Dados</button>
-
+            <div class="col-sm-2">
+            <button type="submit" class="btn btn-success"><span>Gerar Contrato</span></button>                
             </div>
         </div>
     </form>
-    <br>
 </div>
-<div class="col-md-2"></div>        
+<div class="col-md-2"></div> 
 </body>
 </html>

@@ -19,51 +19,49 @@ $(document).ready(function () {
 
     // Mascaras 
     $(document).ready(function() {
-
-     $("#cpf").inputmask({
+       $("#cpf").inputmask({
         mask: ["999.999.999-99", ],
         keepStatic: true
     });
-     $("#cns").inputmask({
+       $("#cns").inputmask({
         mask: ["999999999999999", ],
         keepStatic: true
     });
-     $("#datanascimento").inputmask({
+       $("#datanascimento").inputmask({
         mask: ["99/99/9999", ],
         keepStatic: true
     });
-     $("#cep").inputmask({
+       $("#cep").inputmask({
         mask: ["99999-999", ],
         keepStatic: true
     });
-     $("#telefone1").inputmask({
+       $("#telefone1").inputmask({
         mask: ["(99) 9999-9999", "(99) 99999-9999", ],
         keepStatic: true
     });
-     $("#telefone2").inputmask({
+       $("#telefone2").inputmask({
         mask: ["(99) 9999-9999", "(99) 99999-9999", ],
         keepStatic: true
     });
- });
+   });
 
 
     // Consultar o CEP
     $('#cep').on('blur', function () {
 
         if ($.trim($("#cep").val()) != "") {
-
             $("#mensagem").html('(Aguarde, consultando CEP ...)');
             $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=" + $("#cep").val(), function () {
-
                 if (resultadoCEP["resultado"]) {
                     $("#rua").val(unescape(resultadoCEP["tipo_logradouro"]) + " " + unescape(resultadoCEP["logradouro"]));
                     $("#bairro").val(unescape(resultadoCEP["bairro"]));
                     $("#cidade").val(unescape(resultadoCEP["cidade"]));
                     $("#uf").val(unescape(resultadoCEP["uf"]));
                 }
-
                 //$("#mensagem").html('');
             });
         }
     });
 });
+
+
