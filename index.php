@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <script src="js/jquery-3.1.1.js" type="text/javascript"></script>
-    <script src="jquery.validate.js" type="text/javascript"></script>
+
     <script src="js/scripts.js" type="text/javascript"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
@@ -18,17 +18,17 @@
 <body>
     <div class="col-md-2"></div>
     <div class="col-md-8">
-        <form method="POST" novalidate="novalidate" id="validar" style="display: block;">
+        <form method="POST" novalidate="novalidate" id="form" action="montarcontrato.php" style="display: block;">
             <hr>
             <div class="row">
                 <div class="col-sm-3">
                     <label>Plano</label>
-                    <select name="plano" class="form-control selectpicker" required="">
+                    <select name="plano" class="form-control selectpicker" required>
                         <option value=" ">-</option>
                         <option>UAR-CP</option>
                         <option>USRC</option>
-                        <option >USR-CP</option>
                         <option >UPRC</option>
+                        <option >USR-CP</option>                        
                         <option >USNC</option>
                         <option >UPNC</option>                                   
                     </select>
@@ -46,7 +46,7 @@
             <div class="row">
                 <div class="col-sm-6">
                     <label>Nome</label>
-                    <input type="text" class="form-control" name="nome" maxlength="50" id="nome" style="text-transform: uppercase;" required="">
+                    <input type="text" class="form-control" name="nome" maxlength="50" id="nome" style="text-transform: uppercase;" required>
                 </div>
                 <div class="col-sm-3 cp-data">
                     <label>Data de Nascimento</label>
@@ -66,7 +66,7 @@
             </div>
             <div class="row">                   
                 <div class="col-sm-3">
-                    <label>CPF*</label>
+                    <label>CPF</label>
                     <input type="text" class="form-control" name="cpf" id="cpf" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
@@ -79,7 +79,7 @@
                 </div>
                 <div class="col-sm-3">
                     <label>Orgão Emissor</label>
-                    <select name="estadocivil" class="form-control selectpicker" >
+                    <select name="orgaoemissor" class="form-control selectpicker" >
                         <option value=" ">-</option>
                         <option>SSP</option>
                         <option>Outros Emissores</option>                            
@@ -137,7 +137,7 @@
         <br>
         <div class="row">
             <div class="col-sm-2">
-            <button type="submit" class="btn btn-success"><span>Gerar Contrato</span></button>                
+            <button type="submit" class="btn btn-primary"><span>Gerar Contrato</span></button>                
             </div>
         </div>
     </form>

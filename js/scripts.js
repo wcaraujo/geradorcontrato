@@ -19,31 +19,31 @@ $(document).ready(function () {
 
     // Mascaras 
     $(document).ready(function() {
-       $("#cpf").inputmask({
+     $("#cpf").inputmask({
         mask: ["999.999.999-99", ],
         keepStatic: true
     });
-       $("#cns").inputmask({
+     $("#cns").inputmask({
         mask: ["999999999999999", ],
         keepStatic: true
     });
-       $("#datanascimento").inputmask({
+     $("#datanascimento").inputmask({
         mask: ["99/99/9999", ],
         keepStatic: true
     });
-       $("#cep").inputmask({
+     $("#cep").inputmask({
         mask: ["99999-999", ],
         keepStatic: true
     });
-       $("#telefone1").inputmask({
+     $("#telefone1").inputmask({
         mask: ["(99) 9999-9999", "(99) 99999-9999", ],
         keepStatic: true
     });
-       $("#telefone2").inputmask({
+     $("#telefone2").inputmask({
         mask: ["(99) 9999-9999", "(99) 99999-9999", ],
         keepStatic: true
     });
-   });
+ });
 
 
     // Consultar o CEP
@@ -64,4 +64,118 @@ $(document).ready(function () {
     });
 });
 
+$(document).ready( function() {
+  $("#formularioContato").validate({
+    // Define as regras
+    rules:{
+      campoNome:{
+        // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
+        required: true, minlength: 2
+    },
+    campoEmail:{
+        // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
+        required: true, email: true
+    },
+    campoMensagem:{
+        // campoMensagem será obrigatório (required) e terá tamanho mínimo (minLength)
+        required: true, minlength: 2
+    }
+},
+    // Define as mensagens de erro para cada regra
+    messages:{
+      campoNome:{
+        required: "Digite o seu nome",
+        minLength: "O seu nome deve conter, no mínimo, 2 caracteres"
+    },
+    campoEmail:{
+        required: "Digite o seu e-mail para contato",
+        email: "Digite um e-mail válido"
+    },
+    campoMensagem:{
+        required: "Digite a sua mensagem",
+        minLength: "A sua mensagem deve conter, no mínimo, 2 caracteres"
+    }
+}
+});
+});
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+$(document).ready(function () {
+
+    $('#form').submit(function() {
+        var dados = $('#form').serialize();
+
+        $.ajax({
+            url: 'montarcontrato.php',
+            dataType: "json",
+            data: dados,
+            type: 'POST',
+            processData: false,
+            cache: false,
+            contentType: false,            
+            success: function (data) {
+                $("#form button[type=submit] img").hide();
+
+
+                if (data.retorno === true) {
+                    $("#form button[type=submit]").removeClass("btn-primary");
+                    $("#form button[type=submit]").addClass("btn-success");
+                    $("#form button[type=submit] span").text("Sucesso!");
+                    setInterval(function () {
+                        history.go(0);
+                    }, 1300);
+                } else {
+                    $("#form button[type=submit]").removeClass("btn-primary");
+                    $("#form button[type=submit]").addClass("btn-danger");
+                    $("#form button[type=submit] span").text("Erro!");
+                    $(".alert-danger strong").text(data.mensagem);
+                    $(".alert-danger").show();
+                }
+
+            }, error: function (data) {
+                $("#form button[type=submit] img").hide();
+
+                $("#form button[type=submit]").removeClass("btn-primary");
+                $("#form button[type=submit]").addClass("btn-danger");
+                $("#form button[type=submit] span").text("Erro2!");
+
+                $('.alert-danger strong').text(data);
+                $('.alert-danger').show();
+            }
+        });
+
+        return false;
+    });
+});
+
+
+
+*/
