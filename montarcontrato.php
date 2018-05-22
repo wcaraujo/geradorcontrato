@@ -1,41 +1,53 @@
 <?php
+
+$arquivoOrigem = "./modelo-contrato/modelo-saida.rtf";
+$arquivoDestino = ""; 
 $modelo = "";
+
 $contrato = $_POST['plano'];
 $tabela = $_POST['tabela'];
 
 $dados = array('nome' => $_POST['nome'],
-    'datanascimento' => $_POST['datanascimento'],
-    'estadocivil' => $_POST['estadocivil'],
-    'cpf' => $_POST['cpf'],
-    'cns' => $_POST['cns'],
-    'rg' => $_POST['rg'],
-    'orgaoemissor' => $_POST['orgaoemissor'],
-    'nomepai' => $_POST['nomepai'],
-    'nomemae' => $_POST['nomemae'],
-    'cep' => $_POST['cep'],
-    'rua' => $_POST['rua'],
-    'bairro' => $_POST['bairro'],
-    'cidade' => $_POST['cidade'],
-    'uf' => $_POST['uf'],
-    'telefone1' => $_POST['telefone1'],
-    'telefone2' => $_POST['telefone2'],
-    'email' => $_POST['email']);
+	'datanascimento' => $_POST['datanascimento'],
+	'estadocivil' => $_POST['estadocivil'],
+	'cpf' => $_POST['cpf'],
+	'cns' => $_POST['cns'],
+	'rg' => $_POST['rg'],
+	'orgaoemissor' => $_POST['orgaoemissor'],
+	'nomepai' => $_POST['nomepai'],
+	'nomemae' => $_POST['nomemae'],
+	'cep' => $_POST['cep'],
+	'rua' => $_POST['rua'],
+	'bairro' => $_POST['bairro'],
+	'cidade' => $_POST['cidade'],
+	'uf' => $_POST['uf'],
+	'telefone1' => $_POST['telefone1'],
+	'telefone2' => $_POST['telefone2'],
+	'email' => $_POST['email']);
 
 //echo json_encode($dados);
 
 if ($contrato == "UAR-CP") {
-   $modelo = "./modelo-contrato/UAR-CP/UAR-CP.rtf";   
+	$modelo = "./modelo-contrato/UAR-CP/UAR-CP.rtf";   
 } else if ($contrato == "USR") {
-   $modelo = "./modelo-contrato/USR/USR.rtf";   
+	$modelo = "./modelo-contrato/USR/USR.rtf";   
 } else if ($contrato == "UPR") {
-   $modelo = "./modelo-contrato/UPR/UPR.rtf";   
+	$modelo = "./modelo-contrato/UPR/UPR.rtf";   
 } else if ($contrato == "USR-CP") {
-   $modelo = "./modelo-contrato/USR-CP/USR-CP.rtf";   
+	$modelo = "./modelo-contrato/USR-CP/USR-CP.rtf";   
 } else if ($contrato == "USN") {
-   $modelo = "./modelo-contrato/USN/USN.rtf";   
+	$modelo = "./modelo-contrato/USN/USN.rtf";   
 } else if ($contrato == "UPN") {
-   $modelo = "./modelo-contrato/UPN/UPN.rtf";   
+	$modelo = "./modelo-contrato/UPN/UPN.rtf";   
 }
+
+mkdir(__DIR__.'/contrato-saida/' . $contrato . ' - ' . $dados['nome'], 0777, true);
+$arquivoDestino = '/contrato-saida/' . $contrato . ' - ' . $dados['nome'];
+//copy($arquivoOrigem, $arquivoDestino);
+
+echo $arquivoDestino;
+
+
 
 $saida = populate_RTF($dados, $modelo);
 
@@ -44,7 +56,7 @@ $conteudo = fopen($arquivoFinal, "w"); /* Abre o arquivo de saida e coloca o pon
 fwrite($conteudo, $saida); /* Escreve os dados no arquivo de saida */
 fclose($conteudo); /* Fecha o arquivo final */
 
-header('Location: index.php');
+//header('Location: index.php');
 
 
 //echo "<p>$saida</p>";
@@ -62,24 +74,24 @@ readfile($arquivoFinal);
 // Funcao que gera o arquivo de saida
 function populate_RTF($vars, $doc_file) {
 
-    $replacements = array('\\' => "\\\\",
-        '{' => "\{",
-        '}' => "\}");
+	$replacements = array('\\' => "\\\\",
+		'{' => "\{",
+		'}' => "\}");
 
-    $document = file_get_contents($doc_file);
-    if (!$document) {
-        return false;
-    }
+	$document = file_get_contents($doc_file);
+	if (!$document) {
+		return false;
+	}
 
-    foreach ($vars as $key => $value) {
-        $search = "%%" . strtoupper($key) . "%%";
+	foreach ($vars as $key => $value) {
+		$search = "%%" . strtoupper($key) . "%%";
 
-        foreach ($replacements as $orig => $replace) {
-            $value = str_replace($orig, $replace, $value);
-        }
+		foreach ($replacements as $orig => $replace) {
+			$value = str_replace($orig, $replace, $value);
+		}
 
-        $document = str_replace($search, $value, $document);
-    }
+		$document = str_replace($search, $value, $document);
+	}
 
-    return $document;
+	return $document;
 }
