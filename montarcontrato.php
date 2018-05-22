@@ -3,8 +3,6 @@ $modelo = "";
 $contrato = $_POST['plano'];
 $tabela = $_POST['tabela'];
 
-echo $contrato;
-
 $dados = array('nome' => $_POST['nome'],
     'datanascimento' => $_POST['datanascimento'],
     'estadocivil' => $_POST['estadocivil'],
@@ -45,6 +43,9 @@ $arquivoFinal = "arq-saida/usrcp-saida.rtf"; /* Indica qual o arquivo de saida *
 $conteudo = fopen($arquivoFinal, "w"); /* Abre o arquivo de saida e coloca o ponteiro na primeira posição */
 fwrite($conteudo, $saida); /* Escreve os dados no arquivo de saida */
 fclose($conteudo); /* Fecha o arquivo final */
+
+header('Location: index.php');
+
 
 //echo "<p>$saida</p>";
 /*
