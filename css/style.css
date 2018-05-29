@@ -1,84 +1,23 @@
-/*@import url('https://fonts.googleapis.com/css?family=Assistant:150');*/
-body, .container-fluid{
-    margin: 0 !important;
-    padding: 0 !important;
-    font-family: 'Assistant', sans-serif;;
-}
-html{
-    min-width: 600px;
-}
-input[type='button'], input[type='submit'], button[type='submit']{
+
+input[type='button'], input[type='submit'], button[type='submit'] {
     width: 160px;
-}
+} 
 
-button[type='submit'] img{
-    width: 22px;
-    height: 22px;
-    display: none;
-}
-button[type='button'] img{
-    width: 22px;
-    height: 22px;
-    display: none;
-}
-
-.alert{
-    display: none;
-}
-label.error{
-    color: red;
-}
-label{
+label {
     margin-top: 15px;
+} 
+
+.retorno {
+    text-align: center;
+    text-transform: uppercase;
 }
 
+
+
+/*
 header{
-    /*background: #204d74;*/
+    /*background: #204d74;
     background: #0A5F55;
     height: 160px;
     width: 100%;
-}
-header a{
-    float: right;
-    margin-top: 90px;
-    margin-right: 30px;
-}
-header img{
-    width: 230px;
-    height: 100px;
-    float: left;
-    margin-left: 2%;
-    margin-top: 25px;
-}
-header h1{
-    float: left;
-    color: white;
-    margin-top: 50px;
-    margin-left: 30px;
-    font-weight: bold;
-}
-
-fieldset{
-    border: 1px solid #ddd !important;
-    margin: 0;
-    padding: 10px;       
-    position: relative;
-    border-radius:4px;
-    background-color:#f5f5f5;
-    padding-left:10px!important;
-}	
-legend{
-    font-size:1.2em;
-    font-weight:bold;
-    margin-bottom: 0px; 
-    width: 250px; 
-    border: 1px solid #ddd;
-    border-radius: 4px; 
-    padding: 5px 5px 5px 10px; 
-    background-color: #ffffff;
-}
-img.addImg, img.remove_campo{
-    width: 25px;
-    float: right;
-    cursor: pointer;
-}
+    } */

@@ -1,29 +1,30 @@
 <?php
 
-$arquivoOrigem = "./modelo-contrato/modelo-saida.rtf";
-$arquivoDestino = ""; 
+$localOrigem = "./modelo-contrato/modelo-saida.rtf";
+$localDestino = ""; 
 $modelo = "";
+$data = str_replace("/","-", date("d/m/Y")); 
 
 $contrato = $_POST['plano'];
 $tabela = $_POST['tabela'];
 
-$dados = array('nome' => $_POST['nome'],
+$dados = array('nome' => strtoupper($_POST['nome']),
 	'datanascimento' => $_POST['datanascimento'],
-	'estadocivil' => $_POST['estadocivil'],
+	'estadocivil' => strtoupper($_POST['estadocivil']),
 	'cpf' => $_POST['cpf'],
 	'cns' => $_POST['cns'],
-	'rg' => $_POST['rg'],
-	'orgaoemissor' => $_POST['orgaoemissor'],
-	'nomepai' => $_POST['nomepai'],
-	'nomemae' => $_POST['nomemae'],
+	'identidade' => $_POST['identidade'],
+	'orgaoemissor' => strtoupper($_POST['orgaoemissor']),
+	'nomepai' => strtoupper($_POST['nomepai']),
+	'nomemae' => strtoupper($_POST['nomemae']),
 	'cep' => $_POST['cep'],
-	'rua' => $_POST['rua'],
-	'bairro' => $_POST['bairro'],
-	'cidade' => $_POST['cidade'],
-	'uf' => $_POST['uf'],
+	'rua' => strtoupper($_POST['rua']),
+	'bairro' => strtoupper($_POST['bairro']),
+	'cidade' => strtoupper($_POST['cidade']),
+	'uf' => strtoupper($_POST['uf']),
 	'telefone1' => $_POST['telefone1'],
 	'telefone2' => $_POST['telefone2'],
-	'email' => $_POST['email']);
+	'email' => strtolower($_POST['email']));
 
 //echo json_encode($dados);
 
@@ -41,22 +42,36 @@ if ($contrato == "UAR-CP") {
 	$modelo = "./modelo-contrato/UPN/UPN.rtf";   
 }
 
-mkdir(__DIR__.'/contrato-saida/' . $contrato . ' - ' . $dados['nome'], 0777, true);
-$arquivoDestino = '/contrato-saida/' . $contrato . ' - ' . $dados['nome'];
-//copy($arquivoOrigem, $arquivoDestino);
+mkdir(__DIR__.'/contrato-saida/' . $data . ' - ' . $contrato . ' - ' . $dados['nome'], 0777, true);
+$localDestino = 'contrato-saida/' . $data . ' - ' . $contrato . ' - ' . $dados['nome'] . '/modelo-saida.rtf';
 
-echo $arquivoDestino;
+copy($localOrigem, $localDestino);
+//rename($arquivoDestino, $arquivoDestino);
+
+
+
+
+
+
+
+
 
 
 
 $saida = populate_RTF($dados, $modelo);
 
-$arquivoFinal = "arq-saida/usrcp-saida.rtf"; /* Indica qual o arquivo de saida */
+$arquivoFinal = $localDestino; /* Indica qual o arquivo de saida */
 $conteudo = fopen($arquivoFinal, "w"); /* Abre o arquivo de saida e coloca o ponteiro na primeira posição */
 fwrite($conteudo, $saida); /* Escreve os dados no arquivo de saida */
 fclose($conteudo); /* Fecha o arquivo final */
 
+if (strlen($arquivoFinal) > 0) {
+	echo "Contrato gerado com sucesso!";	
+}
+
 //header('Location: index.php');
+
+
 
 
 //echo "<p>$saida</p>";
@@ -70,6 +85,9 @@ header("Content-Length: " . filesize($arquivoFinal));
 
 readfile($arquivoFinal);
 */
+
+
+
 
 // Funcao que gera o arquivo de saida
 function populate_RTF($vars, $doc_file) {

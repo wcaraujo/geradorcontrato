@@ -3,22 +3,17 @@
     <title>Atualização Cadastral</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <script src="js/jquery-3.1.1.js" type="text/javascript"></script>
-
-    <script src="js/scripts.js" type="text/javascript"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>  
-    <script src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>    
-
-
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/scripts.js""></script>    
     <link href="css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-    <div class="col-md-2"></div>
+    <div class="col-md-2"></div>       
     <div class="col-md-8">
-        <form method="POST" novalidate="novalidate" id="form" action="montarcontrato.php" style="display: block;">
+        <br>
+        <div id="retorno" class="retorno"></div>
+        <form method="POST" novalidate="novalidate" id="formularioContrato" action="montarcontrato.php" style="display: block;">
             <hr>
             <div class="row">
                 <div class="col-sm-3">
@@ -66,7 +61,7 @@
             </div>
             <div class="row">                   
                 <div class="col-sm-3">
-                    <label>CPF</label>
+                    <label>CPF</label>  
                     <input type="text" class="form-control" name="cpf" id="cpf" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
@@ -75,7 +70,7 @@
                 </div>
                 <div class="col-sm-3">
                     <label>RG</label>
-                    <input type="text" class="form-control" name="rg" id="rg" style="text-transform: uppercase;">
+                    <input type="text" class="form-control" name="identidade" id="identidade" style="text-transform: uppercase;">
                 </div>
                 <div class="col-sm-3">
                     <label>Orgão Emissor</label>
@@ -134,14 +129,25 @@
                 <input type="text" class="form-control" name="email" id="email">
             </div>
         </div>
+
         <br>
         <div class="row">
             <div class="col-sm-2">
-            <button type="submit" class="btn btn-primary"><span>Gerar Contrato</span></button>                
+                <button type="submit" class="btn btn-success"><span>Gerar Contrato</span></button>                
             </div>
         </div>
-    </form>
+        <hr>
+    </div>
+</form>
 </div>
 <div class="col-md-2"></div> 
+
+
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.mask.min.js"></script>
+<script src="js/validate.js"></script>
+<script src="js/mask.js"></script>
+
+
 </body>
 </html>

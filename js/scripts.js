@@ -1,181 +1,43 @@
 $(document).ready(function () {
 
-    // Método para pular campos teclando ENTER
-    $('.pula').on('keypress', function (e) {
-        var tecla = (e.keyCode ? e.keyCode : e.which);
-
-        if (tecla == 13) {
-            campo = $('.pula');
-            indice = campo.index(this);
-
-            if (campo[indice + 1] !== null) {
-                proximo = campo[indice + 1];
-                proximo.focus();
-                e.preventDefault(e);
-            }
-        }
-    });
-
-
-    // Mascaras 
-    $(document).ready(function() {
-     $("#cpf").inputmask({
-        mask: ["999.999.999-99", ],
-        keepStatic: true
-    });
-     $("#cns").inputmask({
-        mask: ["999999999999999", ],
-        keepStatic: true
-    });
-     $("#datanascimento").inputmask({
-        mask: ["99/99/9999", ],
-        keepStatic: true
-    });
-     $("#cep").inputmask({
-        mask: ["99999-999", ],
-        keepStatic: true
-    });
-     $("#telefone1").inputmask({
-        mask: ["(99) 9999-9999", "(99) 99999-9999", ],
-        keepStatic: true
-    });
-     $("#telefone2").inputmask({
-        mask: ["(99) 9999-9999", "(99) 99999-9999", ],
-        keepStatic: true
-    });
- });
-
-
     // Consultar o CEP
     $('#cep').on('blur', function () {
 
-        if ($.trim($("#cep").val()) != "") {
-            $("#mensagem").html('(Aguarde, consultando CEP ...)');
-            $.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=" + $("#cep").val(), function () {
-                if (resultadoCEP["resultado"]) {
-                    $("#rua").val(unescape(resultadoCEP["tipo_logradouro"]) + " " + unescape(resultadoCEP["logradouro"]));
-                    $("#bairro").val(unescape(resultadoCEP["bairro"]));
-                    $("#cidade").val(unescape(resultadoCEP["cidade"]));
-                    $("#uf").val(unescape(resultadoCEP["uf"]));
-                }
+    	if ($.trim($("#cep").val()) != "") {
+    		$("#mensagem").html('(Aguarde, consultando CEP ...)');
+    		$.getScript("http://cep.republicavirtual.com.br/web_cep.php?formato=javascript&cep=" + $("#cep").val(), function () {
+    			if (resultadoCEP["resultado"]) {
+    				$("#rua").val(unescape(resultadoCEP["tipo_logradouro"]) + " " + unescape(resultadoCEP["logradouro"]));
+    				$("#bairro").val(unescape(resultadoCEP["bairro"]));
+    				$("#cidade").val(unescape(resultadoCEP["cidade"]));
+    				$("#uf").val(unescape(resultadoCEP["uf"]));
+    			}
                 //$("#mensagem").html('');
             });
-        }
+    	}
     });
 });
 
-$(document).ready( function() {
-  $("#formularioContato").validate({
-    // Define as regras
-    rules:{
-      campoNome:{
-        // campoNome será obrigatório (required) e terá tamanho mínimo (minLength)
-        required: true, minlength: 2
-    },
-    campoEmail:{
-        // campoEmail será obrigatório (required) e precisará ser um e-mail válido (email)
-        required: true, email: true
-    },
-    campoMensagem:{
-        // campoMensagem será obrigatório (required) e terá tamanho mínimo (minLength)
-        required: true, minlength: 2
-    }
-},
-    // Define as mensagens de erro para cada regra
-    messages:{
-      campoNome:{
-        required: "Digite o seu nome",
-        minLength: "O seu nome deve conter, no mínimo, 2 caracteres"
-    },
-    campoEmail:{
-        required: "Digite o seu e-mail para contato",
-        email: "Digite um e-mail válido"
-    },
-    campoMensagem:{
-        required: "Digite a sua mensagem",
-        minLength: "A sua mensagem deve conter, no mínimo, 2 caracteres"
-    }
-}
-});
-});
 
 
+$(document).ready(function() {
 
+            $("#formularioContrato").submit(function(e){
+                e.preventDefault();
+                $.ajax({
+                    type: "POST",
+                    url: $(this).attr("action"),
+                    data: $(this).serialize(),
+                    success: function(mensagem){
+                        //alert("ok");
+                        $("#retorno").html(mensagem);
+                        //$("#retorno").html(mensagem).slideDown('slow');
+                        
+                        $("#formularioContrato").trigger('reset');
+               
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-$(document).ready(function () {
-
-    $('#form').submit(function() {
-        var dados = $('#form').serialize();
-
-        $.ajax({
-            url: 'montarcontrato.php',
-            dataType: "json",
-            data: dados,
-            type: 'POST',
-            processData: false,
-            cache: false,
-            contentType: false,            
-            success: function (data) {
-                $("#form button[type=submit] img").hide();
-
-
-                if (data.retorno === true) {
-                    $("#form button[type=submit]").removeClass("btn-primary");
-                    $("#form button[type=submit]").addClass("btn-success");
-                    $("#form button[type=submit] span").text("Sucesso!");
-                    setInterval(function () {
-                        history.go(0);
-                    }, 1300);
-                } else {
-                    $("#form button[type=submit]").removeClass("btn-primary");
-                    $("#form button[type=submit]").addClass("btn-danger");
-                    $("#form button[type=submit] span").text("Erro!");
-                    $(".alert-danger strong").text(data.mensagem);
-                    $(".alert-danger").show();
-                }
-
-            }, error: function (data) {
-                $("#form button[type=submit] img").hide();
-
-                $("#form button[type=submit]").removeClass("btn-primary");
-                $("#form button[type=submit]").addClass("btn-danger");
-                $("#form button[type=submit] span").text("Erro2!");
-
-                $('.alert-danger strong').text(data);
-                $('.alert-danger').show();
-            }
+                    },           
+                });
+            });
+            
         });
-
-        return false;
-    });
-});
-
-
-
-*/
